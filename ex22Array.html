@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex22Array.html</title>
+</head>
+<body>
+    <h1>Array</h1>
+    <script>
+        /*  [1] literal 을 이용해서 배열 객체를 생성하는 방법
+            [2] Array()를 이용하는 방법
+
+            JS 표기법
+             - {} : 객체
+             - [] : 배열
+         */
+        let user={ //이런 형태를 Json 이라고 함.
+            name:'홍길동',
+            age:22,
+            addr:'부산시'
+        }
+        //alert(typeof user)
+        //[1] literal 을 이용해서 배열 객체를 생성하는 방법
+        let arr=[10, 20, 'JavaScript', 3.141592, true];
+        //alert(typeof arr); //object
+        //for loop 이용해 배열 arr에 저장된 값을 document.write 하세요.
+        for(let i = 0; i<arr.length; i++){
+            document.write(arr[i]+", ");
+        }
+        
+        //[2] Array()를 이용하는 방법
+        //방법 2-1]
+        var arr2=Array();// 빈 배열 생성
+        //alert(arr2.length);//0
+        arr2[0]="Hi";
+        arr2[1]="JavaScript";
+        document.write("<br>", arr2, "<br>");
+        //방법 2-2]
+        var arr3=Array(3); //배열크기 : 3
+        arr3.push(100);
+        console.log("arr3.length = "+arr3.length);
+        //방법 2-3]
+        var arr4=Array(77, 88, 92, 100);
+        //for loop 이용해 출력하기
+        for(let i=0; i<arr4.length; i++){
+            document.write(arr4[i],"<br>");
+        }
+    </script>
+    <hr>
+    <script>
+        //for in 루프문 이용
+        //for(속성 in 객체|배열){}
+        for(var k in arr4) //k => 배열의 인덱스.
+        {
+            document.write(`<h3>${arr4[k]}</h3>`);
+        }
+
+        for(var attr in user){
+            document.write(`<h3>${attr} : ${user[attr]}</h3>`)
+        }
+        //배열의 함수
+        // - forEach(함수(value, index)) : 배열에 저장된 요소(item)를 알아서 반복하면서 callback 함수의 매개변수에 전달한다.
+        arr4.forEach(function(value, i){
+            document.write(`<h3 style="color:lime;">${value}=> ${i}</h3>`)
+        })
+        
+    </script>
+</body>
+</html>

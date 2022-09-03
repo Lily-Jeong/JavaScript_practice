@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex15BOM_window.html</title>
+    <style>
+        div#circle{
+            background-color: blueviolet;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>window객체의 setTimeout()/clearTimeout()활용</h2>
+    <h2>window객체의 setInterval()/clearInterval()활용</h2>
+    <button onclick="show()">Click Me</button>
+    <button onclick="go()">Go Go</button>
+    <button onclick="stop()">Stop</button>
+    <button onclick="goGoogle()">3초 뒤에 구글로 이동</button>
+    <button onclick="move()">Move</button>
+    <!-- [1]goGoolge() 함수에서 location 이용, 3초 뒤에 구글로 이동
+         [2]move()함수에서 circle 참조해서 보여준 뒤, x좌표를 300px인 위치로 4초뒤에 이동.
+    -->
+    <hr>
+
+    <div id="circle">
+
+    </div>
+    <script>
+        var wid=null; //전역변수
+        function show(){
+            //id = circle => 해당 요소의 style을 이용해서 display 속성 값을 변경하세요.
+             let obj=document.getElementById('circle');
+             obj.style.display='block';
+             //obj.style.background-color='yellow'; [X]
+             //JavaScript에서는 하이픈('-')이 빼기(-)연산자로 사용되므로
+             //하이픈을 빼고 대신 하이픈 뒤 첫글자를 대문자로 기술.
+             obj.style.backgroundColor='tomato';
+        }
+        function go(){
+            let obj=document.querySelector('#circle');
+            //wid=window.setTimeout(function name, milisecond): bring function (only once) after milisecond
+            //window.clearTimeout(wid) : setTimeout()걸은 것을 중지 시킴.
+            wid=window.setTimeout(show, 3000) //milisecond = 1/1000second
+
+        }
+        function stop(){
+            if(wid!=null){
+                window.clearTimeout(wid);
+            }
+        }
+        const goGoogle=function(){
+            setTimeout(()=>{
+                window.location.href='http://www.google.com';
+            }, 3000);
+        }
+        function move(){
+            let obj=document.querySelector('#circle');
+            obj.style.display='block';
+            //[1] setTimeout(moveCircle, 4000);
+            /*[2]
+            setTimeout(function(){
+                obj.style.position='absolute';
+                obj.style.left='300px';
+            }, 4000);
+            */
+
+           //ES6 이후 화살표 함수 ()=>{}
+           //[3]
+           setTimeout(()=>{
+                obj.style.position='absolute';
+                obj.style.left='300px';
+           }, 3000)
+        }
+        /*
+        function moveCircle(){
+            console.log('moveCircle');
+            let obj=document.querySelector('#circle');
+            obj.style.position='absolute';
+            obj.style.left='300px';
+        }
+        */
+
+
+    </script>
+
+</body>
+</html>

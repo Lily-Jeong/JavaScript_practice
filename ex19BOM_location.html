@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex19BOM_location.html</title>
+    <script>
+
+
+        //id가 b2인 버튼 클릭시 구글페이지로 이동시키되, 2초 뒤에 이동
+
+        //let url="http://www.google.com";
+        let obj=null;
+        window.onload=()=>{
+            //내가한 것.
+            obj=document.getElementById('b2');
+            obj.onclick=()=>{
+                open(url);
+            }
+            let b1=document.getElementById('b1');
+            let msg=document.querySelector('#msg');
+
+            b1.onclick=()=>{
+                let str=`<h2>${window.location.href}</h2>
+                <h2>${location.hostname}</h2>
+                <h2>${location.pathname}</h2>
+                <h2>${location.protocol}</h2>
+                <h2>${location.port}</h2>
+                `;
+                //document.write(str);
+                msg.innerHTML=str;
+            }
+        }//onload()----------
+
+        function newPage(){
+            //assign() 이용해서 ex01.html 페이지를 로드시키기
+            location.assign('ex01.html');
+        }
+
+        function refresh(){
+            console.log('reload()함수 수행 예정');
+            setTimeout(()=>{
+                location.reload();//새로고침 수행.
+            }, 3000);
+        }
+
+    </script>
+</head>
+<body>
+    <h1>BOM- window.location객체</h1>
+    <button id="b1">location객체의 속성 살펴보기</button>
+    <button id="b2">구글 페이지로 이동</button>
+    <button onclick="newPage()">새로운 페이지</button>
+    <button onclick="refresh()">3초 뒤에 새로고침</button>
+    <button onclick="go()">3초후 페이지 이동</button>
+    <hr color='red'>
+    <div id="msg">
+
+    </div>
+</body>
+</html>

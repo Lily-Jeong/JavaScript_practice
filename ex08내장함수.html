@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex08내장함수.html</title>
+</head>
+<body>
+    <h1>Inner Function</h1>
+    <h2>parseInt(), parseFloat(), Number(), Boolean(), isNaN(), eval()</h2>
+    <script>
+        var a=parseFloat("3.14");
+        var b=Number("2.12");
+        document.write(a+b,"<br>");
+
+        var str="50+11*2-3";
+        pr(str);
+        //eval(string) : 문자열로 된 수식을 파싱해서 실제 연산을 수행한 결과값 반환.
+        var result=eval(str);
+        pr(result);
+
+        //isNaN(값) : 매개변수의 값이 숫자가 아니면 true.
+        //is not a number
+        pr(isNaN("55a")); //ture
+        pr(isNaN("5-2")); //true
+        pr(isNaN(eval("5-2"))); //false
+        document.write("<hr color='grey'>");
+
+        //Boolean(값) : 1=> true, 0=> false. 값이 있으면 true.
+        pr(Boolean(1));//true
+        pr(Boolean(0));//false
+        pr(Boolean(100)); //true
+        pr(Boolean(""));
+        pr(Boolean(" "));
+        pr(Boolean("0"));
+        pr(Boolean(undefined));
+        document.write("<hr color='navy'>");
+
+        pr(Boolean(null));
+        pr(Boolean(true));
+        pr(Boolean(false));
+
+
+        function pr(str){
+            document.write("<h2>"+str+"</h2>");
+        }
+
+    </script>
+</body>
+</html>

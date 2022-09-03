@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex30DOM삭제수정.html</title>
+</head>
+<body>
+    <h1>DOM - 삭제, 수정</h1>
+    <ul id="menu">
+        <li>HTML</li>
+        <li id="css">CSS</li>
+        <li id="js">JavaScript</li>
+        <li>jQuery</li>
+    </ul>
+    <hr>
+    <button onclick="del()">dom 삭제</button>
+    <button onclick="del2()">dom 삭제2</button>
+    <button onclick="edit()">dom수정1</button>
+
+    <script>
+        //부모요소.removeChild(삭제할요소)
+        function del(){
+           let parent=document.getElementById('menu');
+           let obj=document.getElementById("css");
+           parent.rmoveChild(obj);
+        }
+    </script>
+</body>
+</html>
